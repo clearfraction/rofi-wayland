@@ -26,7 +26,7 @@ BuildRequires : pkgconfig(pangocairo)
 BuildRequires : pkgconfig(xcb-xrm)
 BuildRequires : pkgconfig(xkbcommon)
 BuildRequires : wayland-dev wayland-protocols-dev
-BuildRequires : xcb-util-cursor-dev
+# BuildRequires : xcb-util-cursor-dev
 BuildRequires : cmake
 
 
@@ -108,7 +108,7 @@ export FFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=4 "
 export CXXFLAGS="$CXXFLAGS -O3 -ffat-lto-objects -flto=4 "
 meson \
     --libdir=lib64 --prefix=/usr \
-    --buildtype=plain builddir
+    --buildtype=plain builddir -Dxcb=disabled
 ninja -v -C builddir
 
 %install
